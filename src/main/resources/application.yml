@@ -1,0 +1,24 @@
+server:
+  port: 8080  # 伺服器啟動的 HTTP 埠號，預設是 8080，這裡顯式設定方便確認
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/coindesk;DB_CLOSE_DELAY=-1;MODE=MySQL
+      # JDBC 連線位址：
+      # jdbc:h2:file: 表示使用 H2 檔案型資料庫（重啟後資料不會消失）
+      # ./data/coindesk 代表資料庫檔案儲存在專案的 data 資料夾中，檔名為 coindesk
+      # DB_CLOSE_DELAY=-1 表示關閉連線時資料庫不會自動關閉
+      # MODE=MySQL 讓 H2 在 SQL 語法上模擬 MySQL（避免語法不相容）
+    driver-class-name: org.h2.Driver  # H2 資料庫的 JDBC Driver 類別
+    username: sa   # H2 預設帳號
+    password:      # H2 預設密碼為空（開發測試用，正式環境不要空密碼）
+  jpa:
+    hibernate:
+      ddl-auto: update   # 啟動時自動比對實體類別與資料表結構，缺的會新增，不會刪資料
+    show-sql: true       # 在 console 顯示執行的 SQL 語句
+    properties:
+      hibernate:
+        format_sql: true # 將 SQL 語句排版（更容易閱讀）
+  h2:
+    console:
+      enabled: true      # 開啟 H2 Web Console（方便在瀏覽器管理資料庫）
+      path: /h2-console  # 設定 H2 Console 的訪問路徑（http://localhost:8080/h2-console）
