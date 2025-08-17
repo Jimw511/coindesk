@@ -145,6 +145,8 @@ curl -X DELETE http://localhost:8080/currencies/TWD -i
 
 測試涵蓋：
 - 幣別維護CRUD：查詢（含排序）、單筆查詢、新增（含 409）、更新（含 404）、刪除
+- Coindesk API 呼叫與轉換
+- Mock Data fallback
 
 ---
 
